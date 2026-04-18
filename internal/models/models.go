@@ -3,21 +3,22 @@ package models
 import "time"
 
 type User struct {
-	ID          uint64    `db:"id" json:"id"`
-	PublicID    string    `db:"public_id" json:"public_id"`
-	FirebaseUID *string   `db:"firebase_uid" json:"firebase_uid,omitempty"`
-	Email       *string   `db:"email" json:"email,omitempty"`
-	Username    string    `db:"username" json:"username"`
-	FullName    string    `db:"full_name" json:"full_name"`
-	AvatarURL   *string   `db:"avatar_url" json:"avatar_url,omitempty"`
-	Age         *int      `db:"age" json:"age,omitempty"`
-	JobTitle    *string   `db:"job_title" json:"job_title,omitempty"`
-	Gender      *string   `db:"gender" json:"gender,omitempty"`
-	Partner     *string   `db:"partner" json:"partner,omitempty"`
-	Credits     int       `db:"credits" json:"credits"`
-	IsVIP       bool      `db:"is_vip" json:"is_vip"`
-	CreatedAt   time.Time `db:"created_at" json:"created_at"`
-	UpdatedAt   time.Time `db:"updated_at" json:"updated_at"`
+	ID           uint64    `db:"id" json:"id"`
+	PublicID     string    `db:"public_id" json:"public_id"`
+	FirebaseUID  *string   `db:"firebase_uid" json:"firebase_uid,omitempty"`
+	Email        *string   `db:"email" json:"email,omitempty"`
+	PasswordHash *string   `db:"password_hash" json:"-"`
+	Username     string    `db:"username" json:"username"`
+	FullName     string    `db:"full_name" json:"full_name"`
+	AvatarURL    *string   `db:"avatar_url" json:"avatar_url,omitempty"`
+	Age          *int      `db:"age" json:"age,omitempty"`
+	JobTitle     *string   `db:"job_title" json:"job_title,omitempty"`
+	Gender       *string   `db:"gender" json:"gender,omitempty"`
+	Partner      *string   `db:"partner" json:"partner,omitempty"`
+	Credits      int       `db:"credits" json:"credits"`
+	IsVIP        bool      `db:"is_vip" json:"is_vip"`
+	CreatedAt    time.Time `db:"created_at" json:"created_at"`
+	UpdatedAt    time.Time `db:"updated_at" json:"updated_at"`
 }
 
 type Thread struct {
