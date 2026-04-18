@@ -13,6 +13,8 @@ CREATE TABLE IF NOT EXISTS users (
   username VARCHAR(64) NOT NULL,
   full_name VARCHAR(120) NOT NULL,
   avatar_url TEXT NULL,
+  bio TEXT NULL,
+  language_code VARCHAR(12) NULL DEFAULT 'tr',
   age INT NULL,
   job_title VARCHAR(120) NULL,
   gender VARCHAR(40) NULL,

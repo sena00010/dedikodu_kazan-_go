@@ -1,0 +1,5 @@
+USE dedikodu_kazani;
+
+ALTER TABLE users
+  ADD COLUMN IF NOT EXISTS bio TEXT NULL AFTER avatar_url,
+  ADD COLUMN IF NOT EXISTS language_code VARCHAR(12) NULL DEFAULT 'tr' AFTER bio;

@@ -11,6 +11,8 @@ type User struct {
 	Username     string    `db:"username" json:"username"`
 	FullName     string    `db:"full_name" json:"full_name"`
 	AvatarURL    *string   `db:"avatar_url" json:"avatar_url,omitempty"`
+	Bio          *string   `db:"bio" json:"bio,omitempty"`
+	LanguageCode *string   `db:"language_code" json:"language_code,omitempty"`
 	Age          *int      `db:"age" json:"age,omitempty"`
 	JobTitle     *string   `db:"job_title" json:"job_title,omitempty"`
 	Gender       *string   `db:"gender" json:"gender,omitempty"`

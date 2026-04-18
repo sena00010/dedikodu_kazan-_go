@@ -76,11 +76,12 @@ func (s *Store) GetUserByID(ctx context.Context, id uint64) (models.User, error)
 	return user, err
 }
 
-func (s *Store) UpdateProfile(ctx context.Context, userID uint64, fullName string, age *int, jobTitle, gender, partner *string, avatarURL *string) (models.User, error) {
+func (s *Store) UpdateProfile(ctx context.Context, userID uint64, fullName string, age *int, jobTitle, gender, partner, avatarURL, bio, languageCode *string) (models.User, error) {
 	_, err := s.db.ExecContext(ctx, `
 		UPDATE users
-		SET full_name = ?, age = ?, job_title = ?, gender = ?, partner = ?, avatar_url = COALESCE(?, avatar_url)
-		WHERE id = ?`, fullName, age, jobTitle, gender, partner, avatarURL, userID)
+		SET full_name = ?, age = ?, job_title = ?, gender = ?, partner = ?,
+			avatar_url = COALESCE(?, avatar_url), bio = ?, language_code = ?
+		WHERE id = ?`, fullName, age, jobTitle, gender, partner, avatarURL, bio, languageCode, userID)
 	if err != nil {
 		return models.User{}, err
 	}

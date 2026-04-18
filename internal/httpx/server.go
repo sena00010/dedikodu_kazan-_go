@@ -178,18 +178,20 @@ func (s *Server) me(c *gin.Context) {
 
 func (s *Server) updateProfile(c *gin.Context) {
 	var req struct {
-		FullName  string  `json:"full_name" binding:"required"`
-		Age       *int    `json:"age"`
-		JobTitle  *string `json:"job_title"`
-		Gender    *string `json:"gender"`
-		Partner   *string `json:"partner"`
-		AvatarURL *string `json:"avatar_url"`
+		FullName     string  `json:"full_name" binding:"required"`
+		Age          *int    `json:"age"`
+		JobTitle     *string `json:"job_title"`
+		Gender       *string `json:"gender"`
+		Partner      *string `json:"partner"`
+		AvatarURL    *string `json:"avatar_url"`
+		Bio          *string `json:"bio"`
+		LanguageCode *string `json:"language_code"`
 	}
 	if err := c.ShouldBindJSON(&req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-	user, err := s.store.UpdateProfile(c.Request.Context(), userID(c), req.FullName, req.Age, req.JobTitle, req.Gender, req.Partner, req.AvatarURL)
+	user, err := s.store.UpdateProfile(c.Request.Context(), userID(c), req.FullName, req.Age, req.JobTitle, req.Gender, req.Partner, req.AvatarURL, req.Bio, req.LanguageCode)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
